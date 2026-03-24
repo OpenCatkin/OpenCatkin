@@ -1,16 +1,27 @@
-## Hi there 👋
+🌿 OpenCatkin: 结构化知识提取与拓扑校验框架
+OpenCatkin 是一个 Python 框架，用于将零散的文本数据自动转化为可验证的、结构化的知识图谱。
+我们解决什么问题？
+消灭 RAG 幻觉：不再直接让 LLM 阅读原始文档，而是先将文档转化为经过验证的结构化路径。
+自动化图谱构建：利用 LLM 作为解析器，提取三元组，取代昂贵的人工录入。
+逻辑一致性检查：引入“验证插件”机制，确保提取到的知识符合特定领域的物理或逻辑规则（如：化学价键、数学公式、业务逻辑）。
+核心工作流：
+提取 (Muscle)：调用 LLM 将文本解析为 (Subject, Relation, Object) 的 JSON 格式。
+校验 (Immune)：通过插件化的验证器（如 RDKit、SymPy、或者自定义脚本）对提取到的事实进行硬核审核。
+固化 (Skeleton)：将通过审核的事实持久化到 NetworkX 或 Neo4j 图数据库中，并进行拓扑聚类分析。
+适用场景：
+医药研发（文献自动提纯与反应链构建）
+金融合规（政策条款提取与冲突检测）
+专业领域垂直 RAG（提供比向量检索更精准的路径检索）
 
-<!--
-**OpenCatkin/OpenCatkin** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+OpenCatkin/
+├── opencatkin/                  # 开源核心库
+│   ├── pipeline.py              # 核心流控：读入文本 -> 提取 -> 校验 -> 存入
+│   ├── extractors/              # LLM 提取模块接口
+│   ├── validators/              # 验证器插件接口及基础示例 (如：正则验证、基础数学)
+│   └── persistence/             # 图存储接口 (NetworkX 实现)
+├── examples/                    # 示例代码
+│   └── text_to_graph.py         # 展示如何从一句话生成一个校验过的图节点
+├── requirements.txt
+└── README.md                    # 务实的说明文档
 
-Here are some ideas to get you started:
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
