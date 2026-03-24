@@ -17,6 +17,7 @@
 > *   金融合规（政策条款提取与冲突检测）
 > *   专业领域垂直 RAG（提供比向量检索更精准的路径检索）
 
+#项目结构
 ```
 OpenCatkin/
 ├── opencatkin/                  # 开源核心库
@@ -30,3 +31,10 @@ OpenCatkin/
 └── README.md                    # 务实的说明文档
 
 ```
+
+
+🗺️ 演进路线 (Roadmap)
+Phase 1 (Current)：基于物理校验的确定性知识构建（实现代谢与固化）。
+Phase 2 (Evolutionary)：引入持久同调算法 (TDA)，实现逻辑簇的自动空间折叠。
+Phase 3 (Active Selection)：构建“假设-仿真-验证”的闭环，实现系统的主动学习与突变选择。
+Phase 4 (Coherent Logic)：利用量子计算原理或张量网络，实现复平面上的逻辑坍缩，替代顺序搜索。
