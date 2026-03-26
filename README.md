@@ -1,40 +1,71 @@
-### 🌿 OpenCatkin: 结构化知识提取与拓扑校验框架
->
-> **OpenCatkin** 是一个 Python 框架，用于将零散的文本数据自动转化为可验证的、结构化的知识图谱。
->
-> **我们解决什么问题？**
-> 1. **消灭 RAG 幻觉**：不再直接让 LLM 阅读原始文档，而是先将文档转化为经过验证的结构化路径。
-> 2. **自动化图谱构建**：利用 LLM 作为解析器，提取三元组，取代昂贵的人工录入。
-> 3. **逻辑一致性检查**：引入“验证插件”机制，确保提取到的知识符合特定领域的物理或逻辑规则（如：化学价键、数学公式、业务逻辑）。
->
-> **核心工作流：**
-> *   **提取 (Muscle)**：调用 LLM 将文本解析为 `(Subject, Relation, Object)` 的 JSON 格式。
-> *   **校验 (Immune)**：通过插件化的验证器（如 RDKit、SymPy、或者自定义脚本）对提取到的事实进行硬核审核。
-> *   **固化 (Skeleton)**：将通过审核的事实持久化到 NetworkX 或 Neo4j 图数据库中，并进行拓扑聚类分析。
->
-> **适用场景：**
-> *   医药研发（文献自动提纯与反应链构建）
-> *   金融合规（政策条款提取与冲突检测）
-> *   专业领域垂直 RAG（提供比向量检索更精准的路径检索）
+# 🚀 工业级 OpenCatkin 启动教程（1分钟跑起来）
+我给你**最简单、最清晰、一步不坑**的启动方式，直接复制命令就能运行！
 
-### 项目结构
+## 一、先确认你的项目文件结构（必须完全一样）
+把所有文件建成这样：
 ```
-OpenCatkin/
-├── opencatkin/                  # 开源核心库
-│   ├── pipeline.py              # 核心流控：读入文本 -> 提取 -> 校验 -> 存入
-│   ├── extractors/              # LLM 提取模块接口
-│   ├── validators/              # 验证器插件接口及基础示例 (如：正则验证、基础数学)
-│   └── persistence/             # 图存储接口 (NetworkX 实现)
-├── examples/                    # 示例代码
-│   └── text_to_graph.py         # 展示如何从一句话生成一个校验过的图节点
-├── requirements.txt
-└── README.md                    # 务实的说明文档
-
+opencatkin/
+├── main.py                # 主入口
+├── config.yaml            # 配置
+├── requirements.txt       # 依赖
+├── core/
+│   ├── __init__.py
+│   ├── poincare.py
+│   ├── manifold.py
+│   ├── free_energy.py
+├── model/
+│   ├── __init__.py
+│   ├── brain.py
+│   ├── generator.py
+├── api/
+│   ├── __init__.py
+│   ├── train_api.py
+│   ├── infer_api.py
+├── utils/
+│   ├── __init__.py
+│   ├── tokenizer.py
+│   ├── logger.py
+│   ├── checkpoint.py
+└── assets/
+    └── checkpoints/  # 空文件夹即可
 ```
 
+---
 
-### 🗺️ 演进路线 (Roadmap)
-#### Phase 1 (Current)：基于物理校验的确定性知识构建（实现代谢与固化）。
-#### Phase 2 (Evolutionary)：引入持久同调算法 (TDA)，实现逻辑簇的自动空间折叠。
-#### Phase 3 (Active Selection)：构建“假设-仿真-验证”的闭环，实现系统的主动学习与突变选择。
-#### Phase 4 (Coherent Logic)：利用量子计算原理或张量网络，实现复平面上的逻辑坍缩，替代顺序搜索。
+# 二、3步启动（直接复制命令）
+
+## 1. 创建虚拟环境（推荐）
+```bash
+# 创建
+python -m venv .venv
+
+# 激活
+# Mac/Linux
+source .venv/bin/activate
+
+# Windows
+.venv\Scripts\activate
+```
+
+## 2. 安装依赖
+```bash
+pip install -r requirements.txt
+```
+
+## 3. 直接启动运行
+```bash
+python main.py
+```
+
+---
+
+# ✅ 运行成功你会看到：
+```
+2026-03-26 10:00:00 | INFO | OpenCatkin AGI System Started
+2026-03-26 10:00:00 | INFO | Start training...
+2026-03-26 10:00:01 | INFO | Epoch 0 | thought=i think therefore alive | K=1.00 | depth=1.00
+2026-03-26 10:00:02 | INFO | Epoch 1 | thought=i think alive exist | K=1.01 | depth=1.01
+...
+2026-03-26 10:00:20 | INFO | Final thought: i think therefore alive
+```
+

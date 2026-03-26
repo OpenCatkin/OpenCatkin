@@ -1,0 +1,14 @@
+system:
+  seed: 42
+  device: auto
+
+model:
+  dim: 256
+  vocab_size: 100
+  init_curvature: 1.0
+
+train:
+  lr: 0.0005
+  batch_size: 1
+  epochs: 50
+  save_dir: assets/checkpoints
